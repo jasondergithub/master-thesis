@@ -29,7 +29,7 @@ parser.add_argument('--weight', action='store_true', default=False, help='Using 
 # model part
 parser.add_argument('--sparse', action='store_true', default=False, help='GNN with sparse version or not.')
 parser.add_argument('--GNN', type=int, default=1, help="The layer of encoder.")
-parser.add_argument('--feature_dim', type=int, default=18, help='Initialize network embedding dimension.')
+parser.add_argument('--feature_dim', type=int, default=64, help='Initialize network embedding dimension.')
 parser.add_argument('--hidden_dim', type=int, default=64, help='GNN network hidden embedding dimension.')
 parser.add_argument('--dropout', type=float, default=0.3, help='GNN layer dropout rate.')
 parser.add_argument('--optim', choices=['sgd', 'adagrad', 'adam', 'adamax'], default='adam',
@@ -263,7 +263,11 @@ for epoch in range(1, opt['num_epoch'] + 1):
         "epoch {}: train_loss = {:.6f}, dev_precision = {:.6f}, dev_recall = {:.6f}, dev_f1 = {:.4f}, NDCG = {:.6f}, MAP = {:.6f}, MRR = {:.6f}".format(
             epoch, \
             train_loss, precision, recall, f1, mndcg, mmap, mmrr))
-    dev_score = recall
+    
+    if opt['id'] == 'lastFm':
+        dev_score = recall
+    else:
+        dev_score = mndcg
     file_logger.log(
         "{}\t{:.4f}\t{:.6f}\t{:.4f}\t{:.4f}".format(epoch, recall, train_loss, dev_score, max([dev_score] + dev_score_history)))
     
