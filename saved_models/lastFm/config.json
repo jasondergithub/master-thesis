@@ -1,5 +1,5 @@
 {
-  "data_dir": "./dataset/music/",
+  "data_dir": "dataset/music/",
   "weight": false,
   "sparse": false,
   "GNN": 2,
@@ -29,7 +29,7 @@
   "save_epoch": 100,
   "save_dir": "./saved_models",
   "id": "lastFm",
-  "topn": -1,
+  "topn": 20,
   "seed": 2040,
   "load": false,
   "model_file": null,
