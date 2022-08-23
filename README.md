@@ -23,3 +23,5 @@ python3 train_rec.py --data_dir dataset/movie/ml-100k/1/ --id ml100k --struct_ra
 ```shell
 python3 train_rec.py --data_dir dataset/music/ --id ml100k --struct_rate 0.001 --GNN 2 --margin 0.1 --lambda 0.2 --num_epoch 1000 --batch_size 256 --lr 0.0005 --topn 20
 ```
+
+We also provide log for the training result. By default, the log records best result by f1-score, map, mrr, ndcg.  
